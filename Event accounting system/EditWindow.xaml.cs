@@ -19,9 +19,38 @@ namespace Event_accounting_system
     /// </summary>
     public partial class EditWindow : Window
     {
-        public EditWindow()
+        private int idOfEditingEvent;
+        public EditWindow(int idOfEditingEvent)
         {
             InitializeComponent();
+            this.idOfEditingEvent = idOfEditingEvent;
+        }
+
+        private void SaveEditButton(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                OfflineEvent? offlineEvent = EventsRepository.FindOfflineEventById(idOfEditingEvent);
+                OnlineEvent? onlineEvent = EventsRepository.FindOnlineEventById(idOfEditingEvent);
+                if (offlineEvent != null)
+                {
+                    EventsRepository.ReplaceOfflineEvent(offlineEvent.Id, titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), formatTextBox.Text);
+                }
+                else if (onlineEvent != null)
+                {
+                    EventsRepository.ReplaceOnlineEvent(onlineEvent.Id, titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), formatTextBox.Text);
+                }
+
+                Close();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Какое-то из значений не было введено.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Какое-то из значений введено неверно.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
     }
 }

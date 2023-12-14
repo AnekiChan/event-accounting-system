@@ -45,20 +45,64 @@ namespace Event_accounting_system
 
         public static void Replace(OfflineEvent replacingEvent)
         {
-            int index = offlineEvents.IndexOf(replacingEvent);
-            if (index != -1)
+            bool isReplaced = false;
+            foreach (OfflineEvent e in offlineEvents)
             {
-                offlineEvents[index] = replacingEvent;
+                if (e.Id == replacingEvent.Id)
+                {
+                    offlineEvents[offlineEvents.IndexOf(e)] = e;
+                    isReplaced = true;
+                    break;
+                }
             }
-            else
+
+            if (!isReplaced)
                 throw new ArgumentException("Event not found");
         }
         public static void Replace(OnlineEvent replacingEvent)
         {
-            int index = onlineEvents.IndexOf(replacingEvent);
-            if (index != -1)
+            bool isReplaced = false;
+            foreach (OnlineEvent e in onlineEvents)
             {
-                onlineEvents[index] = replacingEvent;
+                if (e.Id == replacingEvent.Id)
+                {
+                    onlineEvents[onlineEvents.IndexOf(e)] = e;
+                    isReplaced = true;
+                    break;
+                }
+            }
+
+            if (!isReplaced)
+                throw new ArgumentException("Event not found");
+        }
+
+        public static void ReplaceOfflineEvent(int id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string address)
+        {
+            OfflineEvent? editingEvent = FindOfflineEventById(id);
+            if (editingEvent != null)
+            {
+                editingEvent.Title = eventTitle;
+                editingEvent.Description = eventDescription;
+                editingEvent.Date = eventDate;
+                editingEvent.Organizer = eventOrganizer;
+                editingEvent.MaxParticipants = maxParticipants;
+                editingEvent.Address = address;
+            }
+            else
+                throw new ArgumentException("Event not found");
+        }
+
+        public static void ReplaceOnlineEvent(int id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string url)
+        {
+            OnlineEvent? editingEvent = FindOnlineEventById(id);
+            if (editingEvent != null)
+            {
+                editingEvent.Title = eventTitle;
+                editingEvent.Description = eventDescription;
+                editingEvent.Date = eventDate;
+                editingEvent.Organizer = eventOrganizer;
+                editingEvent.MaxParticipants = maxParticipants;
+                editingEvent.Url = url;
             }
             else
                 throw new ArgumentException("Event not found");

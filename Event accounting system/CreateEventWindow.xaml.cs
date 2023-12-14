@@ -35,6 +35,15 @@ namespace Event_accounting_system
                 else
                     EventsRepository.Add(new OnlineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), urlTextBox.Text));
 
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).UpdateDataGrids();
+                        break;
+                    }
+                }
+
                 Close();
             }
             catch (ArgumentNullException)

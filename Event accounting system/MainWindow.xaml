@@ -9,13 +9,13 @@
     <Grid>
         <Canvas Margin="0,10,10,121" HorizontalAlignment="Right" Width="362">
             <TextBlock x:Name="titleTextBlock" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="10" Height="48" Width="342" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock x:Name="maxParticipatorsTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="318" Height="25" Width="342" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14"><Run Text="Максимальное к"/><Run Text="оличество участников:"/></TextBlock>
+            <TextBlock x:Name="maxParticipatorsTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="318" Height="25" Width="342" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Text=""/>
             <TextBlock x:Name="descriptionTextBlock" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="148" Height="152" Width="342" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBlock x:Name="dateTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="63" Height="28" Width="342" HorizontalAlignment="Left" VerticalAlignment="Center" Text="" FontSize="14"/>
             <TextBlock x:Name="formatTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="96" Height="47" Width="342" Text="" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14"/>
         </Canvas>
         <Button Content="+" HorizontalAlignment="Left" Margin="504,73,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="CreateButtonClick"/>
-        <Button Content="E" HorizontalAlignment="Left" Margin="504,106,0,0" VerticalAlignment="Top" Height="28" Width="26"/>
+        <Button Content="E" HorizontalAlignment="Left" Margin="504,106,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="EditButtonClick"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="504,139,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="RemoveEventButtonClick"/>
         <TabControl Margin="10,10,0,0" HorizontalAlignment="Left" Width="489" Height="353" VerticalAlignment="Top">
             <TabItem Header="Офлайн">

@@ -18,6 +18,7 @@ namespace Event_accounting_system
     {
         private OfflineEvent? lastSelectedOfflineEvent;
         private OnlineEvent? lastSelectedOnlineEvent;
+        public int a;
 
         public MainWindow()
         {
@@ -32,7 +33,7 @@ namespace Event_accounting_system
             createEventWindow.Show();
         }
 
-        private void UpdateDataGrids()
+        public void UpdateDataGrids()
         {
             offlineEventsGrid.Items.Refresh();
             onlineEventsGrid.Items.Refresh();
@@ -96,6 +97,23 @@ namespace Event_accounting_system
             {
                 MessageBox.Show("ff");
             }
+        }
+
+        private void EditButtonClick(object sender, RoutedEventArgs e)
+        {
+            EditWindow? editWindow = null;
+
+            if (lastSelectedOfflineEvent != null)
+            {
+                editWindow = new EditWindow(lastSelectedOfflineEvent.Id);
+            }
+            else if (lastSelectedOnlineEvent != null)
+            {
+                editWindow = new EditWindow(lastSelectedOnlineEvent.Id);
+            }
+
+            if (editWindow != null)
+                editWindow.Show();
         }
     }
 }

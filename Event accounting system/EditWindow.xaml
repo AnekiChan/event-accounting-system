@@ -11,7 +11,7 @@
         <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="160"/>
         <DatePicker x:Name="eventDatePicker" Margin="0,124,101,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="162"/>
         <TextBox x:Name="organizerTextBox" HorizontalAlignment="Left" Margin="10,222,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="20"/>
-        <Button x:Name="createNewEventButton" Content="Сохранить" HorizontalAlignment="Right" Margin="0,0,39,21" VerticalAlignment="Bottom" Height="31" Width="125" Click="CreateNewEventButtonClick"/>
+        <Button x:Name="createNewEventButton" Content="Сохранить" HorizontalAlignment="Right" Margin="0,0,39,21" VerticalAlignment="Bottom" Height="31" Width="125" Click="SaveEditButton"/>
         <TextBox x:Name="maxParticipantsTextBox" HorizontalAlignment="Left" Margin="10,247,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="20"/>
         <TextBox x:Name="formatTextBox" HorizontalAlignment="Left" Margin="387,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="253" Height="44"/>
 

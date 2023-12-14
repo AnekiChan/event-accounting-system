@@ -18,7 +18,7 @@
             <TextBox x:Name="urlTextBox" HorizontalAlignment="Center" Margin="0,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253" Height="61"/>
         </Grid>
         <Button x:Name="createNewEventButton" Content="Создать" HorizontalAlignment="Center" Margin="0,303,0,0" VerticalAlignment="Top" Height="31" Width="124" Click="CreateNewEventButtonClick" FontWeight="Bold"/>
-        <TextBox x:Name="maxParticipantsTextBox" HorizontalAlignment="Left" Margin="247,268,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="103" Height="20" TextChanged="maxParticipantsTextBox_TextChanged"/>
+        <TextBox x:Name="maxParticipantsTextBox" HorizontalAlignment="Left" Margin="247,268,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="103" Height="20"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Название"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Описание"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"><Run Language="ru-ru" Text="Организатор"/></TextBlock>
