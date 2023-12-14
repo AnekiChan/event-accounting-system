@@ -6,38 +6,88 @@ using System.Threading.Tasks;
 
 namespace Event_accounting_system
 {
-    internal class EventsRepository<T>
-        where T : Event
+    internal static class EventsRepository
     {
-        List<T> events = new List<T>();
+        private static List<OfflineEvent> offlineEvents = new List<OfflineEvent>();
+        private static List<OnlineEvent> onlineEvents = new List<OnlineEvent>();
 
-        public EventsRepository() { }
+        static EventsRepository() { }
 
-        public void Add(T singeEvent)
+        public static void Add(OfflineEvent singleEvent)
+        {
+            if (singleEvent != null)
+                offlineEvents.Add(singleEvent);
+            else
+                throw new NullReferenceException($"{nameof(singleEvent)} is null");
+        }
+        public static void Add(OnlineEvent singeEvent)
         {
             if (singeEvent != null)
-                events.Add(singeEvent);
+                onlineEvents.Add(singeEvent);
             else
                 throw new NullReferenceException($"{nameof(singeEvent)} is null");
         }
 
-        public void Remove(T singeEvent)
+        public static void Remove(OfflineEvent singeEvent)
         {
             if (singeEvent != null)
-                events.Remove(singeEvent);
+                offlineEvents.Remove(singeEvent);
+            else
+                throw new NullReferenceException($"{nameof(singeEvent)} is null");
+        }
+        public static void Remove(OnlineEvent singeEvent)
+        {
+            if (singeEvent != null)
+                onlineEvents.Remove(singeEvent);
             else
                 throw new NullReferenceException($"{nameof(singeEvent)} is null");
         }
 
-        public void Replace(T replacingEvent)
+        public static void Replace(OfflineEvent replacingEvent)
         {
-            int index = events.IndexOf(replacingEvent);
+            int index = offlineEvents.IndexOf(replacingEvent);
             if (index != -1)
             {
-                events[index] = replacingEvent;
+                offlineEvents[index] = replacingEvent;
             }
             else
                 throw new ArgumentException("Event not found");
         }
+        public static void Replace(OnlineEvent replacingEvent)
+        {
+            int index = onlineEvents.IndexOf(replacingEvent);
+            if (index != -1)
+            {
+                onlineEvents[index] = replacingEvent;
+            }
+            else
+                throw new ArgumentException("Event not found");
+        }
+
+        public static OfflineEvent? FindOfflineEventById(int id)
+        {
+            foreach (OfflineEvent ev in offlineEvents)
+            {
+                if (ev.Id == id)
+                    return ev;
+            }
+
+            return null;
+        }
+
+        public static OnlineEvent? FindOnlineEventById(int id)
+        {
+            foreach (OnlineEvent ev in onlineEvents)
+            {
+                if (ev.Id == id)
+                    return ev;
+            }
+
+            return null;
+        }
+
+        public static List<OnlineEvent> GetOnlineEvents() => onlineEvents;
+        public static List<OfflineEvent> GetOfflineEvents() => offlineEvents;
+
     }
 }

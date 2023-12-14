@@ -26,7 +26,25 @@ namespace Event_accounting_system
 
         private void CreateNewEventButtonClick(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                if (offlineRadioButton.IsChecked == true)
+                {
+                    EventsRepository.Add(new OfflineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), addressTextBox.Text));
+                }
+                else
+                    EventsRepository.Add(new OnlineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), urlTextBox.Text));
 
+                Close();
+            }
+            catch (ArgumentNullException)
+            {
+                MessageBox.Show("Какое-то из значений не было введено.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Какое-то из значений введено неверно.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
     }
 }

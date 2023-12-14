@@ -37,11 +37,17 @@ namespace Event_accounting_system
             }
         }
 
-        private DateTime date;
-        public DateTime Date
+        private DateTime? date;
+        public DateTime? Date
         {
             get => date;
-            set => date = value;
+            set
+            {
+                if (value == null)
+                    throw new ArgumentNullException(nameof(Date));
+                else
+                    date = value;
+            }
         }
 
         private string organizer;
@@ -83,7 +89,7 @@ namespace Event_accounting_system
             }
         }
 
-        public Event(string eventTitle, string eventDescription, DateTime eventDate, string eventOrganizer, int maxParticipants)
+        public Event(string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants)
         {
             int tick = Environment.TickCount;
             Id = Interlocked.Increment(ref tick);

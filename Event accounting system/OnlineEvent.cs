@@ -22,7 +22,7 @@ namespace Event_accounting_system
             }
         }
 
-        public OnlineEvent(string eventTitle, string eventDescription, DateTime eventDate, string eventOrganizer, int maxParticipants, string url) 
+        public OnlineEvent(string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string url) 
             : base(eventTitle, eventDescription, eventDate, eventOrganizer, maxParticipants)
         {
             Url = url;

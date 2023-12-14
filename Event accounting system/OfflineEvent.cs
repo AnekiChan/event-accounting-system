@@ -21,7 +21,7 @@ namespace Event_accounting_system
             }
         }
 
-        public OfflineEvent(string eventTitle, string eventDescription, DateTime eventDate, string eventOrganizer, int maxParticipants, string address)
+        public OfflineEvent(string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string address)
             : base(eventTitle, eventDescription, eventDate, eventOrganizer, maxParticipants)
         {
             Address = address;

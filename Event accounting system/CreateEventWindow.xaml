@@ -7,17 +7,25 @@
         mc:Ignorable="d"
         Title="CreateEventWindow" Height="360" Width="650" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="20"/>
-        <TextBox x:Name="DescriptionTextBox" HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="160"/>
-        <DatePicker x:Name="eventDatePicker" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top" Height="26" Width="162"/>
-        <TextBox x:Name="OrganizerTextBox" HorizontalAlignment="Left" Margin="10,222,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="20"/>
-        <Grid HorizontalAlignment="Right" Width="253" Margin="0,32,10,0" Height="146" VerticalAlignment="Top">
-            <RadioButton x:Name="oflineRadioButton" GroupName="EventType" Content="Офлайн" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True"/>
-            <TextBox x:Name="addressTextBox" HorizontalAlignment="Center" Margin="0,22,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="253" Height="44"/>
-            <RadioButton x:Name="onlineRadioButton" GroupName="EventType" Content="Онлайн" HorizontalAlignment="Left" Margin="0,80,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="urlTextBox" HorizontalAlignment="Center" Margin="0,102,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="253" Height="44"/>
+        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="20"/>
+        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="10,78,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="138"/>
+        <DatePicker x:Name="eventDatePicker" Margin="0,255,10,0" VerticalAlignment="Top" Height="31" HorizontalAlignment="Right" Width="253"/>
+        <TextBox x:Name="organizerTextBox" HorizontalAlignment="Left" Margin="10,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="340" Height="20"/>
+        <Grid HorizontalAlignment="Right" Width="253" Margin="0,32,10,0" Height="206" VerticalAlignment="Top">
+            <RadioButton x:Name="offlineRadioButton" GroupName="EventType" Content="Офлайн" HorizontalAlignment="Left" VerticalAlignment="Top" IsChecked="True" FontWeight="Bold"/>
+            <TextBox x:Name="addressTextBox" HorizontalAlignment="Center" Margin="0,37,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253" Height="61"/>
+            <RadioButton x:Name="onlineRadioButton" GroupName="EventType" Content="Онлайн" HorizontalAlignment="Left" Margin="1,103,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+            <TextBox x:Name="urlTextBox" HorizontalAlignment="Center" Margin="0,145,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253" Height="61"/>
         </Grid>
-        <Button x:Name="createNewEventButton" Content="Создать" HorizontalAlignment="Right" Margin="0,0,39,21" VerticalAlignment="Bottom" Height="31" Width="125"/>
+        <Button x:Name="createNewEventButton" Content="Создать" HorizontalAlignment="Center" Margin="0,303,0,0" VerticalAlignment="Top" Height="31" Width="124" Click="CreateNewEventButtonClick" FontWeight="Bold"/>
+        <TextBox x:Name="maxParticipantsTextBox" HorizontalAlignment="Left" Margin="247,268,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="103" Height="20" TextChanged="maxParticipantsTextBox_TextChanged"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Название"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Описание"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"><Run Language="ru-ru" Text="Организатор"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" FontWeight="Bold"><Run Text="Максимальное"/><Run Text=" количество "/><Run Language="ru-ru" Text="участников:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="387,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"><Run Text="Формат мероп"/><Run Language="ru-ru" Text="при"/><Run Text="ятия"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="387,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"><Run Language="ru-ru" Text="Адрес"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="387,156,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"><Run Language="ru-ru" Text="Ссылка"/></TextBlock>
 
     </Grid>
 </Window>
