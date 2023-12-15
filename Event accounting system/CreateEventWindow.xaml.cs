@@ -33,10 +33,10 @@ namespace Event_accounting_system
             {
                 if (offlineRadioButton.IsChecked == true)
                 {
-                    offlineEvents.Add(new OfflineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), addressTextBox.Text));
+                    offlineEvents.AddEvent(new OfflineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), addressTextBox.Text));
                 }
                 else
-                    onlineEvents.Add(new OnlineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), urlTextBox.Text));
+                    onlineEvents.AddEvent(new OnlineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), urlTextBox.Text));
 
                 foreach (Window window in Application.Current.Windows)
                 {

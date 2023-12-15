@@ -109,6 +109,20 @@ namespace Event_accounting_system
             Organizer = eventOrganizer;
             MaxParticipants = maxParticipants;
         }
+        public Event(int _id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants)
+        {
+            id = _id;
+            Title = eventTitle;
+            Description = eventDescription;
+            Date = eventDate;
+            Organizer = eventOrganizer;
+            MaxParticipants = maxParticipants;
+        }
+
+        public override string ToString()
+        {
+            return $"{Id};{Title};{Description};{Date};{Organizer};{MaxParticipants}";
+        }
 
     }
 }

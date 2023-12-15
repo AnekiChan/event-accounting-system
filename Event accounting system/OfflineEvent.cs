@@ -27,9 +27,16 @@ namespace Event_accounting_system
             Address = address;
         }
 
-        public void EditAddress(OfflineEvent offlineEvent)
+        public OfflineEvent(int _id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string address)
+            :base(_id, eventTitle, eventDescription, eventDate, eventOrganizer, maxParticipants)
         {
-            Address = offlineEvent.Address;
+            Address = address;
         }
+
+        public override string ToString()
+        {
+            return $"{Id};{Title};{Description};{Date};{Organizer};{MaxParticipants};{Address}";
+        }
+
     }
 }

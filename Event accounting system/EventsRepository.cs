@@ -9,13 +9,29 @@ namespace Event_accounting_system
     internal class EventsRepository<T> where T : Event
     {
         private static List<T> events = new List<T>();
+        private static SaveManager saveManager = new SaveManager();
 
-        static EventsRepository() { }
+        public EventsRepository()
+        {
+            saveManager.Load();
+        }
 
-        public void Add(T singleEvent)
+        public void AddEventsList(List<T> list)
+        {
+            foreach (T item in list)
+            {
+                events.Add(item);
+            }
+        }
+
+        public void AddEvent(T singleEvent)
         {
             if (singleEvent != null)
+            {
                 events.Add(singleEvent);
+                saveManager.Save();
+            }
+                
             else
                 throw new NullReferenceException($"{nameof(singleEvent)} is null");
         }
@@ -23,14 +39,17 @@ namespace Event_accounting_system
         public void Remove(T singeEvent)
         {
             if (singeEvent != null)
+            {
                 events.Remove(singeEvent);
+                saveManager.Save();
+            }
+                
             else
                 throw new NullReferenceException($"{nameof(singeEvent)} is null");
         }
 
         public void Replace(int id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants)
         {
-            bool isReplaced = true;
             foreach (T e in events)
             {
                 if (e.Id == id)
@@ -40,13 +59,11 @@ namespace Event_accounting_system
                     e.Date = eventDate;
                     e.Organizer = eventOrganizer;
                     e.MaxParticipants = maxParticipants;
-                        
+
+                    saveManager.Save();
                     break;
                 }
             }
-
-            if (!isReplaced)
-                throw new ArgumentException("Event not found");
         }
 
         public T? FindEventById(int id)
@@ -62,5 +79,13 @@ namespace Event_accounting_system
 
         public List<T> GetEvents() => events;
 
+        public string GetAllEvents()
+        {
+            string allEvents = "";
+            foreach (T ev in events)
+                allEvents += ev.ToString() + "\n";
+
+            return allEvents;
+        }
     }
 }

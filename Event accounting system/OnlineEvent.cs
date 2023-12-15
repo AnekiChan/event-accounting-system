@@ -28,9 +28,15 @@ namespace Event_accounting_system
             Url = url;
         }
 
-        public void EditUrl(OnlineEvent onlineEvent)
+        public OnlineEvent(int _id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string url)
+            : base(_id, eventTitle, eventDescription, eventDate, eventOrganizer, maxParticipants)
         {
-            Url = onlineEvent.Url;
+            Url = url;
+        }
+
+        public override string ToString()
+        {
+            return $"{Id};{Title};{Description};{Date};{Organizer};{MaxParticipants};{Url}";
         }
     }
 }

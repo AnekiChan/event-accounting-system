@@ -33,7 +33,7 @@
             </TabItem>
             <TabItem Header="Онлайн">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="onlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp">
+                    <DataGrid x:Name="onlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp" FontWeight="Bold">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Название" Binding="{Binding Title}"/>
