@@ -47,6 +47,8 @@ namespace Event_accounting_system
                     }
                 }
 
+                SaveManager.Save(offlineEvents.GetEvents(), onlineEvents.GetEvents());
+
                 Close();
             }
             catch (ArgumentNullException)

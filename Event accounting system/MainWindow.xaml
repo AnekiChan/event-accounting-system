@@ -14,13 +14,13 @@
             <TextBlock x:Name="dateTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="63" Height="28" Width="342" HorizontalAlignment="Left" VerticalAlignment="Center" Text="" FontSize="14"/>
             <TextBlock x:Name="formatTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="96" Height="47" Width="342" Text="" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14"/>
         </Canvas>
-        <Button Content="+" HorizontalAlignment="Left" Margin="504,73,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="CreateButtonClick"/>
-        <Button Content="E" HorizontalAlignment="Left" Margin="504,106,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="EditButtonClick"/>
-        <Button Content="-" HorizontalAlignment="Left" Margin="504,139,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="RemoveEventButtonClick"/>
+        <Button Content="+" HorizontalAlignment="Left" Margin="504,73,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="CreateButtonClick" FontWeight="Bold"/>
+        <Button Content="✏️" HorizontalAlignment="Left" Margin="504,106,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="EditButtonClick"/>
+        <Button Content="-" HorizontalAlignment="Left" Margin="504,139,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="RemoveEventButtonClick" FontWeight="Bold"/>
         <TabControl Margin="10,10,0,0" HorizontalAlignment="Left" Width="489" Height="353" VerticalAlignment="Top">
             <TabItem Header="Офлайн">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="offlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp" FontWeight="Bold">
+                    <DataGrid x:Name="offlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp" FontWeight="Bold" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Название" Binding="{Binding Title}"/>
@@ -33,7 +33,7 @@
             </TabItem>
             <TabItem Header="Онлайн">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="onlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp" FontWeight="Bold">
+                    <DataGrid x:Name="onlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp" FontWeight="Bold" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Название" Binding="{Binding Title}"/>
@@ -44,7 +44,7 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button x:Name="updateButton" Content="U" HorizontalAlignment="Left" Margin="504,40,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="UpdateButtonClick"/>
+        <Button x:Name="updateButton" Content="🔄" HorizontalAlignment="Left" Margin="504,40,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="UpdateButtonClick" FontSize="16"/>
 
     </Grid>
 </Window>

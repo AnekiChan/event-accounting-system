@@ -26,6 +26,9 @@ namespace Event_accounting_system
         public MainWindow()
         {
             InitializeComponent();
+            offlineEvents.AddEventsList(SaveManager.LoadOfflineEvents());
+            onlineEvents.AddEventsList(SaveManager.LoadOnlineEvents());
+
             offlineEventsGrid.ItemsSource = offlineEvents.GetEvents();
             onlineEventsGrid.ItemsSource = onlineEvents.GetEvents();
         }
@@ -95,6 +98,7 @@ namespace Event_accounting_system
                 }
 
                 UpdateDataGrids();
+                SaveManager.Save(offlineEvents.GetEvents(), onlineEvents.GetEvents());
             }
             catch (NullReferenceException)
             {

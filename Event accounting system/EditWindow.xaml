@@ -5,13 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Event_accounting_system"
         mc:Ignorable="d"
-        Title="Edit" Height="360" Width="498" ResizeMode="NoResize">
+        Title="Edit" Height="381" Width="498" ResizeMode="NoResize">
     <Grid>
         <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="464" Height="20"/>
         <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="10,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="464" Height="106"/>
-        <DatePicker x:Name="eventDatePicker" Margin="10,57,0,256" HorizontalAlignment="Left" Width="167"/>
+        <DatePicker x:Name="eventDatePicker" Margin="10,57,0,0" HorizontalAlignment="Left" Width="167" Height="31" VerticalAlignment="Top"/>
         <TextBox x:Name="organizerTextBox" HorizontalAlignment="Left" Margin="10,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="464" Height="20"/>
-        <Button x:Name="createNewEventButton" Content="Обновить" HorizontalAlignment="Center" Margin="0,303,0,0" VerticalAlignment="Top" Height="31" Width="124" FontWeight="Bold" Click="SaveEditButton"/>
+        <Button x:Name="createNewEventButton" Content="Обновить" HorizontalAlignment="Center" Margin="0,303,0,0" Width="124" FontWeight="Bold" Click="SaveEditButton" Height="31" VerticalAlignment="Top"/>
         <TextBox x:Name="maxParticipantsTextBox" HorizontalAlignment="Left" Margin="247,268,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="103" Height="20"/>
         <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Название"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Описание"/></TextBlock>

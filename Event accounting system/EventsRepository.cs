@@ -9,11 +9,10 @@ namespace Event_accounting_system
     internal class EventsRepository<T> where T : Event
     {
         private static List<T> events = new List<T>();
-        private static SaveManager saveManager = new SaveManager();
 
         public EventsRepository()
         {
-            saveManager.Load();
+            
         }
 
         public void AddEventsList(List<T> list)
@@ -29,7 +28,6 @@ namespace Event_accounting_system
             if (singleEvent != null)
             {
                 events.Add(singleEvent);
-                saveManager.Save();
             }
                 
             else
@@ -41,7 +39,6 @@ namespace Event_accounting_system
             if (singeEvent != null)
             {
                 events.Remove(singeEvent);
-                saveManager.Save();
             }
                 
             else
@@ -60,7 +57,6 @@ namespace Event_accounting_system
                     e.Organizer = eventOrganizer;
                     e.MaxParticipants = maxParticipants;
 
-                    saveManager.Save();
                     break;
                 }
             }

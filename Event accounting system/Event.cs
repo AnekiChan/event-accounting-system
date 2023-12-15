@@ -111,7 +111,7 @@ namespace Event_accounting_system
         }
         public Event(int _id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants)
         {
-            id = _id;
+            Id = _id;
             Title = eventTitle;
             Description = eventDescription;
             Date = eventDate;
