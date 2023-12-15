@@ -6,68 +6,41 @@ using System.Threading.Tasks;
 
 namespace Event_accounting_system
 {
-    internal static class EventsRepository
+    internal class EventsRepository<T> where T : Event
     {
-        private static List<OfflineEvent> offlineEvents = new List<OfflineEvent>();
-        private static List<OnlineEvent> onlineEvents = new List<OnlineEvent>();
+        private static List<T> events = new List<T>();
 
         static EventsRepository() { }
 
-        public static void Add(OfflineEvent singleEvent)
+        public void Add(T singleEvent)
         {
             if (singleEvent != null)
-                offlineEvents.Add(singleEvent);
+                events.Add(singleEvent);
             else
                 throw new NullReferenceException($"{nameof(singleEvent)} is null");
         }
-        public static void Add(OnlineEvent singeEvent)
+
+        public void Remove(T singeEvent)
         {
             if (singeEvent != null)
-                onlineEvents.Add(singeEvent);
+                events.Remove(singeEvent);
             else
                 throw new NullReferenceException($"{nameof(singeEvent)} is null");
         }
 
-        public static void Remove(OfflineEvent singeEvent)
+        public void Replace(int id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants)
         {
-            if (singeEvent != null)
-                offlineEvents.Remove(singeEvent);
-            else
-                throw new NullReferenceException($"{nameof(singeEvent)} is null");
-        }
-        public static void Remove(OnlineEvent singeEvent)
-        {
-            if (singeEvent != null)
-                onlineEvents.Remove(singeEvent);
-            else
-                throw new NullReferenceException($"{nameof(singeEvent)} is null");
-        }
-
-        public static void Replace(OfflineEvent replacingEvent)
-        {
-            bool isReplaced = false;
-            foreach (OfflineEvent e in offlineEvents)
+            bool isReplaced = true;
+            foreach (T e in events)
             {
-                if (e.Id == replacingEvent.Id)
+                if (e.Id == id)
                 {
-                    offlineEvents[offlineEvents.IndexOf(e)] = e;
-                    isReplaced = true;
-                    break;
-                }
-            }
-
-            if (!isReplaced)
-                throw new ArgumentException("Event not found");
-        }
-        public static void Replace(OnlineEvent replacingEvent)
-        {
-            bool isReplaced = false;
-            foreach (OnlineEvent e in onlineEvents)
-            {
-                if (e.Id == replacingEvent.Id)
-                {
-                    onlineEvents[onlineEvents.IndexOf(e)] = e;
-                    isReplaced = true;
+                    e.Title = eventTitle;
+                    e.Description = eventDescription;
+                    e.Date = eventDate;
+                    e.Organizer = eventOrganizer;
+                    e.MaxParticipants = maxParticipants;
+                        
                     break;
                 }
             }
@@ -76,41 +49,9 @@ namespace Event_accounting_system
                 throw new ArgumentException("Event not found");
         }
 
-        public static void ReplaceOfflineEvent(int id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string address)
+        public T? FindEventById(int id)
         {
-            OfflineEvent? editingEvent = FindOfflineEventById(id);
-            if (editingEvent != null)
-            {
-                editingEvent.Title = eventTitle;
-                editingEvent.Description = eventDescription;
-                editingEvent.Date = eventDate;
-                editingEvent.Organizer = eventOrganizer;
-                editingEvent.MaxParticipants = maxParticipants;
-                editingEvent.Address = address;
-            }
-            else
-                throw new ArgumentException("Event not found");
-        }
-
-        public static void ReplaceOnlineEvent(int id, string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants, string url)
-        {
-            OnlineEvent? editingEvent = FindOnlineEventById(id);
-            if (editingEvent != null)
-            {
-                editingEvent.Title = eventTitle;
-                editingEvent.Description = eventDescription;
-                editingEvent.Date = eventDate;
-                editingEvent.Organizer = eventOrganizer;
-                editingEvent.MaxParticipants = maxParticipants;
-                editingEvent.Url = url;
-            }
-            else
-                throw new ArgumentException("Event not found");
-        }
-
-        public static OfflineEvent? FindOfflineEventById(int id)
-        {
-            foreach (OfflineEvent ev in offlineEvents)
+            foreach (T ev in events)
             {
                 if (ev.Id == id)
                     return ev;
@@ -119,19 +60,7 @@ namespace Event_accounting_system
             return null;
         }
 
-        public static OnlineEvent? FindOnlineEventById(int id)
-        {
-            foreach (OnlineEvent ev in onlineEvents)
-            {
-                if (ev.Id == id)
-                    return ev;
-            }
-
-            return null;
-        }
-
-        public static List<OnlineEvent> GetOnlineEvents() => onlineEvents;
-        public static List<OfflineEvent> GetOfflineEvents() => offlineEvents;
+        public List<T> GetEvents() => events;
 
     }
 }

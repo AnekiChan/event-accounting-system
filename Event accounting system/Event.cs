@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -93,6 +94,15 @@ namespace Event_accounting_system
         {
             int tick = Environment.TickCount;
             Id = Interlocked.Increment(ref tick);
+            Title = eventTitle;
+            Description = eventDescription;
+            Date = eventDate;
+            Organizer = eventOrganizer;
+            MaxParticipants = maxParticipants;
+        }
+
+        public void Edit(string eventTitle, string eventDescription, DateTime? eventDate, string eventOrganizer, int maxParticipants)
+        {
             Title = eventTitle;
             Description = eventDescription;
             Date = eventDate;

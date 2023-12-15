@@ -19,6 +19,9 @@ namespace Event_accounting_system
     /// </summary>
     public partial class CreateEventWindow : Window
     {
+        private EventsRepository<OfflineEvent> offlineEvents = new EventsRepository<OfflineEvent>();
+        private EventsRepository<OnlineEvent> onlineEvents = new EventsRepository<OnlineEvent>();
+
         public CreateEventWindow()
         {
             InitializeComponent();
@@ -30,10 +33,10 @@ namespace Event_accounting_system
             {
                 if (offlineRadioButton.IsChecked == true)
                 {
-                    EventsRepository.Add(new OfflineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), addressTextBox.Text));
+                    offlineEvents.Add(new OfflineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), addressTextBox.Text));
                 }
                 else
-                    EventsRepository.Add(new OnlineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), urlTextBox.Text));
+                    onlineEvents.Add(new OnlineEvent(titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), urlTextBox.Text));
 
                 foreach (Window window in Application.Current.Windows)
                 {

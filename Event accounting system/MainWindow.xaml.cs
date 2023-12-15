@@ -16,6 +16,9 @@ namespace Event_accounting_system
     /// </summary>
     public partial class MainWindow : Window
     {
+        private EventsRepository<OfflineEvent> offlineEvents = new EventsRepository<OfflineEvent>();
+        private EventsRepository<OnlineEvent> onlineEvents = new EventsRepository<OnlineEvent>();
+
         private OfflineEvent? lastSelectedOfflineEvent;
         private OnlineEvent? lastSelectedOnlineEvent;
         public int a;
@@ -23,8 +26,8 @@ namespace Event_accounting_system
         public MainWindow()
         {
             InitializeComponent();
-            offlineEventsGrid.ItemsSource = EventsRepository.GetOfflineEvents();
-            onlineEventsGrid.ItemsSource = EventsRepository.GetOnlineEvents();
+            offlineEventsGrid.ItemsSource = offlineEvents.GetEvents();
+            onlineEventsGrid.ItemsSource = onlineEvents.GetEvents();
         }
 
         private void CreateButtonClick(object sender, RoutedEventArgs e)
@@ -84,11 +87,11 @@ namespace Event_accounting_system
             {
                 if (lastSelectedOfflineEvent != null)
                 {
-                    EventsRepository.Remove(lastSelectedOfflineEvent);
+                    offlineEvents.Remove(lastSelectedOfflineEvent);
                 }
                 else if (lastSelectedOnlineEvent != null)
                 {
-                    EventsRepository.Remove(lastSelectedOnlineEvent);
+                    onlineEvents.Remove(lastSelectedOnlineEvent);
                 }
 
                 UpdateDataGrids();

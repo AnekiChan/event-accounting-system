@@ -5,15 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Event_accounting_system"
         mc:Ignorable="d"
-        Title="Редактирование" Height="360" Width="650" ResizeMode="NoResize">
+        Title="Edit" Height="360" Width="498" ResizeMode="NoResize">
     <Grid>
-        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="20"/>
-        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="10,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="160"/>
-        <DatePicker x:Name="eventDatePicker" Margin="0,124,101,0" VerticalAlignment="Top" Height="26" HorizontalAlignment="Right" Width="162"/>
-        <TextBox x:Name="organizerTextBox" HorizontalAlignment="Left" Margin="10,222,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="20"/>
-        <Button x:Name="createNewEventButton" Content="Сохранить" HorizontalAlignment="Right" Margin="0,0,39,21" VerticalAlignment="Bottom" Height="31" Width="125" Click="SaveEditButton"/>
-        <TextBox x:Name="maxParticipantsTextBox" HorizontalAlignment="Left" Margin="10,247,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="340" Height="20"/>
-        <TextBox x:Name="formatTextBox" HorizontalAlignment="Left" Margin="387,57,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="253" Height="44"/>
+        <TextBox x:Name="titleTextBox" HorizontalAlignment="Left" Margin="10,32,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="464" Height="20"/>
+        <TextBox x:Name="descriptionTextBox" HorizontalAlignment="Left" Margin="10,114,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="464" Height="106"/>
+        <DatePicker x:Name="eventDatePicker" Margin="10,57,0,256" HorizontalAlignment="Left" Width="167"/>
+        <TextBox x:Name="organizerTextBox" HorizontalAlignment="Left" Margin="10,245,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="464" Height="20"/>
+        <Button x:Name="createNewEventButton" Content="Обновить" HorizontalAlignment="Center" Margin="0,303,0,0" VerticalAlignment="Top" Height="31" Width="124" FontWeight="Bold" Click="SaveEditButton"/>
+        <TextBox x:Name="maxParticipantsTextBox" HorizontalAlignment="Left" Margin="247,268,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="103" Height="20"/>
+        <TextBlock HorizontalAlignment="Left" Margin="10,11,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Название"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="62" FontWeight="Bold"><Run Language="ru-ru" Text="Описание"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontWeight="Bold"><Run Language="ru-ru" Text="Организатор"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="10,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" FontWeight="Bold"><Run Text="Максимальное"/><Run Text=" количество "/><Run Language="ru-ru" Text="участников:"/></TextBlock>
 
     </Grid>
 </Window>

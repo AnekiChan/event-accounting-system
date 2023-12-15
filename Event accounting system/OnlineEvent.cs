@@ -10,7 +10,7 @@ namespace Event_accounting_system
     internal class OnlineEvent: Event
     {
         private string url;
-        public string Url
+        public string? Url
         {
             get => url;
             set
@@ -26,6 +26,11 @@ namespace Event_accounting_system
             : base(eventTitle, eventDescription, eventDate, eventOrganizer, maxParticipants)
         {
             Url = url;
+        }
+
+        public void EditUrl(OnlineEvent onlineEvent)
+        {
+            Url = onlineEvent.Url;
         }
     }
 }

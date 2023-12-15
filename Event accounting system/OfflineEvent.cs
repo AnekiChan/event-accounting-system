@@ -10,7 +10,7 @@ namespace Event_accounting_system
     internal class OfflineEvent : Event
     {
         private string address;
-        public string Address
+        public string? Address
         {
             get => address; set
             {
@@ -25,6 +25,11 @@ namespace Event_accounting_system
             : base(eventTitle, eventDescription, eventDate, eventOrganizer, maxParticipants)
         {
             Address = address;
+        }
+
+        public void EditAddress(OfflineEvent offlineEvent)
+        {
+            Address = offlineEvent.Address;
         }
     }
 }

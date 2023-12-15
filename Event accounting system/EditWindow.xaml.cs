@@ -19,28 +19,56 @@ namespace Event_accounting_system
     /// </summary>
     public partial class EditWindow : Window
     {
+        private EventsRepository<OfflineEvent> offlineEvents = new EventsRepository<OfflineEvent>();
+        private EventsRepository<OnlineEvent> onlineEvents = new EventsRepository<OnlineEvent>();
+
+        private Event? editingEvent;
+        private string? address = null;
+        private string? url = null;
+
         private int idOfEditingEvent;
+
         public EditWindow(int idOfEditingEvent)
         {
             InitializeComponent();
             this.idOfEditingEvent = idOfEditingEvent;
+            editingEvent = offlineEvents.FindEventById(idOfEditingEvent);
+            if (editingEvent == null)
+            {
+                editingEvent = onlineEvents.FindEventById(idOfEditingEvent);
+            }
+            else
+                address = offlineEvents.FindEventById(idOfEditingEvent)?.Address;
+
+            if (editingEvent == null)
+            {
+                Close();
+            }
+            else
+                url = onlineEvents.FindEventById(idOfEditingEvent)?.Url;
+
+            titleTextBox.Text = editingEvent.Title;
+            descriptionTextBox.Text = editingEvent.Description;
+            eventDatePicker.SelectedDate = editingEvent.Date;
+            organizerTextBox.Text = editingEvent.Organizer;
+            maxParticipantsTextBox.Text = editingEvent.MaxParticipants.ToString();
         }
 
         private void SaveEditButton(object sender, RoutedEventArgs e)
         {
             try
             {
-                OfflineEvent? offlineEvent = EventsRepository.FindOfflineEventById(idOfEditingEvent);
-                OnlineEvent? onlineEvent = EventsRepository.FindOnlineEventById(idOfEditingEvent);
-                if (offlineEvent != null)
-                {
-                    EventsRepository.ReplaceOfflineEvent(offlineEvent.Id, titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), formatTextBox.Text);
-                }
-                else if (onlineEvent != null)
-                {
-                    EventsRepository.ReplaceOnlineEvent(onlineEvent.Id, titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text), formatTextBox.Text);
-                }
+                offlineEvents.Replace(idOfEditingEvent, titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text));
+                onlineEvents.Replace(idOfEditingEvent, titleTextBox.Text, descriptionTextBox.Text, eventDatePicker.SelectedDate, organizerTextBox.Text, Int32.Parse(maxParticipantsTextBox.Text));
 
+                foreach (Window window in Application.Current.Windows)
+                {
+                    if (window.GetType() == typeof(MainWindow))
+                    {
+                        (window as MainWindow).UpdateDataGrids();
+                        break;
+                    }
+                }
                 Close();
             }
             catch (ArgumentNullException)
@@ -50,6 +78,10 @@ namespace Event_accounting_system
             catch (ArgumentException)
             {
                 MessageBox.Show("Какое-то из значений введено неверно.", "Предупреждение", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }
