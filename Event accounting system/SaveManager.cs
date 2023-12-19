@@ -16,7 +16,9 @@ namespace Event_accounting_system
         private static string offlineEventsPath = "offlineEvents.txt";
         private static string onlineEventsPath = "onlineEvents.txt";
 
-        public static void Save(List<OfflineEvent> offlineEvents, List<OnlineEvent> onlineEvents)
+        private static string usersPath = "users.txt";
+
+        public static void SaveEvents(List<OfflineEvent> offlineEvents, List<OnlineEvent> onlineEvents)
         {
             using (StreamWriter writer = new StreamWriter(offlineEventsPath, false))
             {
@@ -63,7 +65,7 @@ namespace Event_accounting_system
             List<OnlineEvent> newOfflineEvents = new List<OnlineEvent>();
             string[] lines;
 
-            using (StreamReader reader = new StreamReader(offlineEventsPath))
+            using (StreamReader reader = new StreamReader(onlineEventsPath))
             {
                 lines = reader.ReadToEnd().Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
             }
@@ -79,6 +81,45 @@ namespace Event_accounting_system
             }
 
             return newOfflineEvents;
+        }
+
+        public static void SaveUsers(List<User> users)
+        {
+            using (StreamWriter writer = new StreamWriter(offlineEventsPath, false))
+            {
+                foreach (User user in users)
+                {
+                    writer.WriteLine(user.ToString());
+                }
+            }
+        }
+
+        public static List<User> LoadUsers()
+        {
+            List<User> allUsers = new List<User>();
+            string[] lines;
+
+            using (StreamReader reader = new StreamReader(onlineEventsPath))
+            {
+                lines = reader.ReadToEnd().Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+            }
+
+            foreach (string line in lines)
+            {
+                if (line != "\r")
+                {
+                    string[] values = line.Split(new char[] { ':' });
+                    List<int> ids = new List<int>();
+                    foreach(string id in values[1].Split(new char[] { ';' }))
+                    {
+                        ids.Add(int.Parse(id));
+                    }
+
+                    allUsers.Add(new User(values[0], ids));
+                }
+            }
+
+            return allUsers;
         }
     }
 }

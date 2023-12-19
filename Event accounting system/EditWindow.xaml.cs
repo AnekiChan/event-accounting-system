@@ -23,8 +23,6 @@ namespace Event_accounting_system
         private EventsRepository<OnlineEvent> onlineEvents = new EventsRepository<OnlineEvent>();
 
         private Event? editingEvent;
-        private string? address = null;
-        private string? url = null;
 
         private int idOfEditingEvent;
 
@@ -37,15 +35,11 @@ namespace Event_accounting_system
             {
                 editingEvent = onlineEvents.FindEventById(idOfEditingEvent);
             }
-            else
-                address = offlineEvents.FindEventById(idOfEditingEvent)?.Address;
 
             if (editingEvent == null)
             {
                 Close();
             }
-            else
-                url = onlineEvents.FindEventById(idOfEditingEvent)?.Url;
 
             titleTextBox.Text = editingEvent.Title;
             descriptionTextBox.Text = editingEvent.Description;
@@ -70,7 +64,7 @@ namespace Event_accounting_system
                     }
                 }
 
-                SaveManager.Save(offlineEvents.GetEvents(), onlineEvents.GetEvents());
+                SaveManager.SaveEvents(offlineEvents.GetEvents(), onlineEvents.GetEvents());
 
                 Close();
             }

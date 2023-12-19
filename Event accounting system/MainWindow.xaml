@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Event_accounting_system"
         mc:Ignorable="d"
-        Title="MainWindow" Height="432" Width="922" ResizeMode="NoResize">
+        Title="MainWindow" Height="468" Width="922" ResizeMode="NoResize">
     <Grid>
         <Canvas Margin="0,10,10,121" HorizontalAlignment="Right" Width="362">
             <TextBlock x:Name="titleTextBlock" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="10" Height="48" Width="342" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
-            <TextBlock x:Name="maxParticipatorsTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="318" Height="25" Width="342" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="14" Text=""/>
+            <TextBlock x:Name="maxParticipatorsTextBlock" TextWrapping="Wrap" Canvas.Top="329" Height="25" Width="342" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="14" Text=""/>
             <TextBlock x:Name="descriptionTextBlock" Canvas.Left="10" TextWrapping="Wrap" Text="" Canvas.Top="148" Height="152" Width="342" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Top"/>
             <TextBlock x:Name="dateTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="63" Height="28" Width="342" HorizontalAlignment="Left" VerticalAlignment="Center" Text="" FontSize="14"/>
             <TextBlock x:Name="formatTextBlock" Canvas.Left="10" TextWrapping="Wrap" Canvas.Top="96" Height="47" Width="342" Text="" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="14"/>
@@ -17,7 +17,7 @@
         <Button Content="+" HorizontalAlignment="Left" Margin="504,73,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="CreateButtonClick" FontWeight="Bold"/>
         <Button Content="✏️" HorizontalAlignment="Left" Margin="504,106,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="EditButtonClick"/>
         <Button Content="-" HorizontalAlignment="Left" Margin="504,139,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="RemoveEventButtonClick" FontWeight="Bold"/>
-        <TabControl Margin="10,10,0,0" HorizontalAlignment="Left" Width="489" Height="353" VerticalAlignment="Top">
+        <TabControl Margin="10,10,0,0" HorizontalAlignment="Left" Width="489" Height="415" VerticalAlignment="Top">
             <TabItem Header="Офлайн">
                 <Grid Background="#FFE5E5E5">
                     <DataGrid x:Name="offlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp" FontWeight="Bold" IsReadOnly="True">
@@ -33,7 +33,7 @@
             </TabItem>
             <TabItem Header="Онлайн">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="onlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OfflineEventsGridMouseUp" FontWeight="Bold" IsReadOnly="True">
+                    <DataGrid x:Name="onlineEventsGrid" ItemsSource="{Binding Items}" AutoGenerateColumns="False" MouseUp="OnlineEventsGridMouseUp" FontWeight="Bold" IsReadOnly="True">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Id" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Название" Binding="{Binding Title}"/>
@@ -45,6 +45,7 @@
             </TabItem>
         </TabControl>
         <Button x:Name="updateButton" Content="🔄" HorizontalAlignment="Left" Margin="504,40,0,0" VerticalAlignment="Top" Height="28" Width="26" Click="UpdateButtonClick" FontSize="16"/>
+        <Button Content="Записаться" HorizontalAlignment="Left" Margin="751,391,0,0" VerticalAlignment="Top" Height="34" Width="139"/>
 
     </Grid>
 </Window>

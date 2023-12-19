@@ -36,6 +36,7 @@ namespace Event_accounting_system
         private void CreateButtonClick(object sender, RoutedEventArgs e)
         {
             CreateEventWindow createEventWindow = new CreateEventWindow();
+            createEventWindow.Owner = this;
             createEventWindow.Show();
         }
 
@@ -80,7 +81,8 @@ namespace Event_accounting_system
         {
             titleTextBlock.Text = _event.Title;
             descriptionTextBlock.Text = _event.Description;
-            dateTextBlock.Text = _event.Date.ToString();
+            string[] date = _event.Date.ToString()?.Split(new char[] { ' ' });
+            dateTextBlock.Text = date[0] ?? "No Date";
             maxParticipatorsTextBlock.Text = $"Максимальное количество участников: {_event.MaxParticipants.ToString()}";
         }
 
@@ -98,7 +100,7 @@ namespace Event_accounting_system
                 }
 
                 UpdateDataGrids();
-                SaveManager.Save(offlineEvents.GetEvents(), onlineEvents.GetEvents());
+                SaveManager.SaveEvents(offlineEvents.GetEvents(), onlineEvents.GetEvents());
             }
             catch (NullReferenceException)
             {
@@ -109,6 +111,7 @@ namespace Event_accounting_system
         private void EditButtonClick(object sender, RoutedEventArgs e)
         {
             EditWindow? editWindow = null;
+            editWindow.Owner = this;
 
             if (lastSelectedOfflineEvent != null)
             {
